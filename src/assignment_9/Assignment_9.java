@@ -112,13 +112,13 @@ public class Assignment_9 extends Application {
         outValue.bind(inValue.add(0f).divide(sum));
         outValue2.bind(inValue2.add(0f).divide(sum));
         outValue3.bind(inValue3.add(0f).divide(sum));
-        outValue4.bind(inValue4.add(0f).divide(sum));
+        outValue4.bind(inValue4.add(0f).divide(sum));     
         
-        outText.textProperty().bind(outValue.asString());
-        outText2.textProperty().bind(outValue2.asString());
-        outText3.textProperty().bind(outValue3.asString());
-        outText4.textProperty().bind(outValue4.asString());
-        
+        outText.textProperty().bind(outValue.asString("%.4f"));
+        outText2.textProperty().bind(outValue2.asString("%.4f"));
+        outText3.textProperty().bind(outValue3.asString("%.4f"));
+        outText4.textProperty().bind(outValue4.asString("%.4f"));
+
         root.add(textField, 0, 0);
         root.add(textField2, 0, 1);
         root.add(textField3, 0, 2);
