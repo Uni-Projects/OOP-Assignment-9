@@ -50,12 +50,23 @@ public class Assignment_9 extends Application {
         IntegerProperty sum = new SimpleIntegerProperty();
         
         for(int j = 0 ; j < 4; j++){
-            
-            t[j] = new TextField();
+            TextField tf = t[j] = new TextField();
             i[j] = new SimpleIntegerProperty();
             
+            tf.textProperty().addListener(new ChangeListener< String>() {
+            @Override
+            public void changed(
+                    ObservableValue<? extends String> observable,
+                    String oldValue, String newValue) {
+                if (!newValue.matches(" [1 -9]\\ d{0 ,3}")) {
+                    tf.setText(oldValue);
+                    }
+                }
+             }
+            );
+    
             vb.getChildren().add(t[j]);
-            t[j].textProperty().bindBidirectional(i[j], new NumberStringConverter());  
+            tf.textProperty().bindBidirectional(i[j], new NumberStringConverter());  
         }
         
         sum.bind(i[0].add(i[1]).add(i[2]).add(i[3])); 
