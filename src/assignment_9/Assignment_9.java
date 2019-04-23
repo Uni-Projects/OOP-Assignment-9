@@ -1,24 +1,18 @@
 package assignment_9;
 
 import javafx.application.Application;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
 /**
@@ -35,6 +29,9 @@ public class Assignment_9 extends Application {
         root.setVgap(10);
         
         TextField textField = new TextField();
+        TextField textField2 = new TextField();
+        TextField textField3 = new TextField();
+        TextField textField4 = new TextField();
         
         textField.textProperty().addListener( new ChangeListener< String>() {
             @Override
@@ -47,8 +44,6 @@ public class Assignment_9 extends Application {
             }
         }
         );
-        
-        TextField textField2 = new TextField();
         textField2.textProperty().addListener( new ChangeListener< String>() {
             @Override
             public void changed(
@@ -60,8 +55,6 @@ public class Assignment_9 extends Application {
             }
         }
         );
-        
-        TextField textField3 = new TextField();
         textField3.textProperty().addListener( new ChangeListener< String>() {
             @Override
             public void changed(
@@ -72,9 +65,8 @@ public class Assignment_9 extends Application {
                 }
             }
         }
-        );
-        TextField textField4 = new TextField();
-         textField4.textProperty().addListener( new ChangeListener< String>() {
+        );  
+        textField4.textProperty().addListener( new ChangeListener< String>() {
             @Override
             public void changed(
                     ObservableValue<? extends String> observable,
