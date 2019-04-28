@@ -22,7 +22,7 @@ import javafx.util.converter.NumberStringConverter;
  *
  * @author Paolo Scattolin s1023775
  * @author Johan Urban s1024726
- * 
+ *
  */
 public class Assignment_9 extends Application {
 
@@ -34,49 +34,49 @@ public class Assignment_9 extends Application {
 
         root.setLeft(vb);
         root.setCenter(diagram);
-        
+
         final TextField[] t;
         t = new TextField[4];
-        
+
         IntegerProperty[] i;
         i = new SimpleIntegerProperty[4];
-        
+
         DoubleProperty[] d;
         d = new SimpleDoubleProperty[4];
-        
+
         Arc[] a;
         a = new Arc[4];
-        
+
         IntegerProperty sum = new SimpleIntegerProperty();
-        
-        for(int j = 0 ; j < 4; j++){
+
+        for (int j = 0; j < 4; j++) {
             TextField tf = t[j] = new TextField();
-            i[j] = new SimpleIntegerProperty();
-            
+            i[j] = new SimpleIntegerProperty(1);
+
             tf.textProperty().addListener(new ChangeListener< String>() {
-            @Override
-            public void changed(
-                    ObservableValue<? extends String> observable,
-                    String oldValue, String newValue) {
-                if (!newValue.matches(" [1 -9]\\ d{0 ,3}")) {
-                    tf.setText(oldValue);
+                @Override
+                public void changed(
+                        ObservableValue<? extends String> observable,
+                        String oldValue, String newValue) {
+                    if (!newValue.matches("[1-9]\\d{0,3}")) {
+                        tf.setText(oldValue);
                     }
                 }
-             }
+            }
             );
-    
+
             vb.getChildren().add(t[j]);
-            tf.textProperty().bindBidirectional(i[j], new NumberStringConverter());  
+            tf.textProperty().bindBidirectional(i[j], new NumberStringConverter());
         }
-        
-        sum.bind(i[0].add(i[1]).add(i[2]).add(i[3])); 
+
+        sum.bind(i[0].add(i[1]).add(i[2]).add(i[3]));
         Color[] c = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE};
-        
-        for(int j = 0 ; j < 4; j++){
-            
+
+        for (int j = 0; j < 4; j++) {
+
             a[j] = new Arc();
             d[j] = new SimpleDoubleProperty();
-            
+
             d[j].bind(i[j].add(0f).divide(sum));
             a[j].setType(ArcType.ROUND);
             a[j].setFill(c[j]);
@@ -88,11 +88,11 @@ public class Assignment_9 extends Application {
 
             diagram.getChildren().add(a[j]);
         }
-        
+
         a[1].startAngleProperty().bind(a[0].lengthProperty());
         a[2].startAngleProperty().bind(a[0].lengthProperty().add(a[1].lengthProperty()));
         a[3].startAngleProperty().bind(a[0].lengthProperty().add(a[1].lengthProperty()).add(a[2].lengthProperty()));
-        
+
         Scene scene = new Scene(root, 600, 600);
 
         primaryStage.setTitle("Assignment 9");
